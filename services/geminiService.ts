@@ -1,5 +1,14 @@
 import { GoogleGenAI } from "@google/genai";
 
+// 声明 process 变量以避免 TypeScript 报错 "Cannot find name 'process'"
+// 这对于确保 npm run build (tsc) 成功至关重要
+declare const process: {
+  env: {
+    API_KEY: string;
+    [key: string]: string | undefined;
+  }
+};
+
 const ai = new GoogleGenAI({ apiKey: process.env.API_KEY });
 
 export const generateIdeaExpansion = async (topic: string): Promise<string> => {
