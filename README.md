@@ -4,13 +4,32 @@
 
 ---
 
+## 🌐 如何访问主页
+
+当您完成下方的部署步骤后，您的网站就可以通过浏览器访问了。
+
+**访问地址格式：**
+```text
+https://<您的GitHub用户名>.github.io/<仓库名>/
+```
+
+**示例：**
+如果您在 `package.json` 中配置的 `homepage` 是 `https://323010xu.github.io/Me`：
+- **用户名**：323010xu
+- **仓库名**：Me
+- **您的主页链接即为**：👉 **https://323010xu.github.io/Me/**
+
+> **注意**：首次部署后，GitHub 可能需要 1-5 分钟的时间来构建页面，如果打开是 404，请稍等片刻刷新即可。
+
+---
+
 ## 🚀 部署步骤 (保姆级教程)
 
 ### 第一步：准备 GitHub 仓库
 
 1.  登录 [GitHub](https://github.com)。
 2.  点击右上角的 `+` 号，选择 **New repository** (新建仓库)。
-3.  输入仓库名称 (例如 `my-portfolio`)。
+3.  **仓库名称 (Repository name)**：建议填写 `Me` (与您的 homepage 链接后缀保持一致)。
 4.  确保选择 **Public** (公开)。
 5.  点击 **Create repository**。
 
@@ -26,14 +45,14 @@
     npm install
     ```
 
-### 第三步：配置项目信息
+### 第三步：检查配置信息
 
-打开项目中的 `package.json` 文件，找到 `homepage` 字段，将其修改为您实际的 GitHub 地址：
+打开项目中的 `package.json` 文件，确认 `homepage` 字段与您第一步创建的仓库地址匹配：
 
 ```json
-"homepage": "https://<您的GitHub用户名>.github.io/<仓库名>",
+"homepage": "https://323010xu.github.io/Me",
 ```
-*例如：如果您的用户名是 `zhangsan`，仓库名是 `my-portfolio`，则填写 `https://zhangsan.github.io/my-portfolio`。*
+*如果您的 GitHub 用户名不是 `323010xu` 或者仓库名不是 `Me`，请务必修改此行。*
 
 ### 第四步：推送代码到 GitHub
 
@@ -49,7 +68,8 @@ git add .
 # 提交更改
 git commit -m "Initial commit"
 
-# 关联远程仓库 (将下面的 URL 替换为您第一步创建的仓库地址)
+# 关联远程仓库 (请替换 <您的用户名> 和 <仓库名>)
+# 例如：git remote add origin https://github.com/323010xu/Me.git
 git remote add origin https://github.com/<您的用户名>/<仓库名>.git
 
 # 推送到主分支
@@ -68,16 +88,16 @@ npm run deploy
 1.  这个命令会自动运行 `npm run build`，将您的 TypeScript 代码打包成浏览器可读的静态文件（存放在 `dist` 文件夹）。
 2.  然后利用 `gh-pages` 工具，将 `dist` 文件夹的内容推送到仓库的 `gh-pages` 分支。
 
-### 第六步：开启 GitHub Pages
+### 第六步：开启 GitHub Pages (最后一步！)
 
 1.  回到 GitHub 仓库页面。
 2.  点击 **Settings** (设置) -> 左侧边栏的 **Pages**。
 3.  在 **Build and deployment** 下：
     *   **Source**: 选择 `Deploy from a branch`。
-    *   **Branch**: 选择 `gh-pages` 分支，文件夹选择 `/ (root)`。
+    *   **Branch**: 这里的选择至关重要！请选择 **`gh-pages`** 分支，文件夹选择 `/ (root)`。
 4.  点击 **Save**。
 
-等待几分钟后，页面上方会显示您的网站链接（例如 `https://zhangsan.github.io/my-portfolio/`）。点击即可访问！
+等待页面顶部出现绿色的提示框，里面会包含您的网站链接。
 
 ---
 
@@ -92,7 +112,7 @@ npm run deploy
     git push
     ```
 
-2.  **重新部署**：
+2.  **重新部署**（必须执行此步才能更新线上网站）：
     ```bash
     npm run deploy
     ```
