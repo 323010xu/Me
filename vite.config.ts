@@ -4,7 +4,7 @@ import react from '@vitejs/plugin-react'
 // https://vitejs.dev/config/
 export default defineConfig({
   plugins: [react()],
-  // 关键配置：设置基础路径
-  // 对应您的仓库名 'Me'，这样 https://323010xu.github.io/Me/ 才能正确加载资源
-  base: '/Me/', 
+  // 修改为相对路径 './'，这样无论仓库叫 'Me' 还是 'me'，或者部署在任何子路径下，
+  // 资源都能正确找到，不再依赖硬编码的 '/Me/'
+  base: './', 
 })
